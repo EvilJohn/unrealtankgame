@@ -1,1 +1,2 @@
-# Battle Tank game created in the unreal engine training course
+# Battle Tank
+Battle tank is a game created in the unreal engine training course.
