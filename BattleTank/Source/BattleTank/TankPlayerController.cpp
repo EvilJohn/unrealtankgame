@@ -39,4 +39,21 @@ ATank* ATankPlayerController::GetControlledTank() const
 void ATankPlayerController::AimTowardsCrosshair()
 {
 	if (!GetControlledTank()) { return; }
+
+	FVector HitLocation; // Out Parameter
+	if (GetSightRayHitLocation(HitLocation))
+	{
+		UE_LOG(LogTemp, Warning, TEXT("HitLocation %s"), *HitLocation.ToString()); 
+		// TODO tell the controlled tank to aim to this point
+	}
+}
+bool ATankPlayerController::GetSightRayHitLocation(FVector& OutHitLocation) const
+{
+	// Ray Cast through the cross hair
+	// if hits terrain 
+	//   return true, and set World hit location in OutHitLocation
+	// else
+	//   return false
+	OutHitLocation = FVector(1.0);
+	return true;
 }
