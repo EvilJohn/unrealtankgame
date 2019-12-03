@@ -1,6 +1,8 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "TankBarrel.h"
+#include "TankTurret.h"
+#include "TankAimingComponent.h"
 #include "Tank.h"
 
 // Sets default values
@@ -33,4 +35,15 @@ void ATank::AimAt(FVector HitLocation)
 void ATank::SetBarrelReference(UTankBarrel* BarrelReference)
 {
 	TankAimingComponent->SetBarrelReference(BarrelReference);
+}
+            
+void ATank::SetTurretReference(UTankTurret* TurretReference)
+{
+	TankAimingComponent->SetTurretReference(TurretReference);
+}
+
+void ATank::Fire()
+{
+	auto Time = GetWorld()->GetTimeSeconds();
+	UE_LOG(LogTemp, Warning, TEXT("%f: Firing!"),Time)
 }

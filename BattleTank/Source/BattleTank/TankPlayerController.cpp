@@ -1,6 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "Engine/World.h"
+#include "Tank.h"
 #include "TankPlayerController.h"
 
 ATankPlayerController::ATankPlayerController()
@@ -15,15 +16,6 @@ void ATankPlayerController::BeginPlay()
 	
 	ATank* Tank = nullptr;
 	Tank = GetControlledTank();
-	if (Tank)
-	{
-		UE_LOG(LogTemp, Warning, TEXT("Player Controller Begin Play with controlled tank %s"), *Tank->GetName());
-	}
-	else
-	{
-		UE_LOG(LogTemp, Warning, TEXT("Player Controller Begin Play with No Tank controlled"));
-	}
-
 }
 void ATankPlayerController::Tick(float DeltaTime)
 {
@@ -60,10 +52,7 @@ bool ATankPlayerController::GetSightRayHitLocation(FVector& OutHitLocation) cons
 	if ( GetLookDirection(ScreenLocation, LookDirection) )
 	{		
 		// Line-trace along the LookDirection and see what's hit (up to max ranage)
-		if (GetLookVectorHitLocation(LookDirection, OutHitLocation))
-		{
-			return true;
-		}
+		return GetLookVectorHitLocation(LookDirection, OutHitLocation);
 	}
 	return false;
 }
