@@ -1,5 +1,5 @@
 // Fill out your copyright notice in the Description page of Project Settings.
-
+#include "TankBarrel.h"
 #include "GameFramework/Actor.h"
 #include "Kismet/GameplayStatics.h"
 #include "TankAimingComponent.h"
@@ -14,7 +14,7 @@ UTankAimingComponent::UTankAimingComponent()
 }
 
 
-void UTankAimingComponent::SetBarrelReference(UStaticMeshComponent* BarrelToSet)
+void UTankAimingComponent::SetBarrelReference(UTankBarrel* BarrelToSet)
 {
 	Barrel = BarrelToSet;
 }
@@ -77,6 +77,5 @@ void UTankAimingComponent::MoveBarrelTowards(FVector AimDirection)
 
 
 	UE_LOG(LogTemp, Warning, TEXT("AimAsRotator: %s"), *AimAsRotator.ToString())
-	// Move the barrel the right amount this frame
-	// Given a max elevation speed and the frame time, move thet barrel this frame
+	Barrel->Elevate(5.f); //TODO remove magic number
 }
