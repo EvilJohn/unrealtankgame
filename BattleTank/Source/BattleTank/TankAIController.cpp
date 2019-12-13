@@ -22,15 +22,20 @@ void ATankAIController::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 	auto PlayerTank = Cast<ATank>(GetWorld()->GetFirstPlayerController()->GetPawn());
 	auto AITank = Cast<ATank>(GetPawn());
+	auto PlayerTankName = PlayerTank->GetName();
+	auto AITankName = AITank->GetName();
+
 	if (PlayerTank)
 	{
+		//UE_LOG(LogTemp, Warning, TEXT("PlayerTank %s targeted by to %s"), *PlayerTankName, *AITankName);
 		
-		// TODO Move toward player
+		// Move toward player
+		MoveToActor(PlayerTank, AcceptanceRadius);
 
 		// Aim Toward Player
 		AITank->AimAt(PlayerTank->GetActorLocation());
 		
 		// Fire if ready
-		AITank->Fire();
+		//AITank->Fire();
 	}
 }

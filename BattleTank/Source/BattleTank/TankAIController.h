@@ -23,4 +23,8 @@ private:
 	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+
+protected:
+	// Maximum closing distance to the target
+	float AcceptanceRadius = 1000.f;
 };
