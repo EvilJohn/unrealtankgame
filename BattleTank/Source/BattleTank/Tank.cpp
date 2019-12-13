@@ -7,6 +7,7 @@
 #include "TankTurret.h"
 #include "TankAimingComponent.h"
 #include "TankProjectileMovementComponent.h"
+#include "TankMovementComponent.h"
 #include "Tank.h"
 
 // Sets default values

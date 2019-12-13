@@ -9,7 +9,8 @@
 
 class UTankBarrel;
 class UTankTurret;
-class UTankAimingCoponent;
+class UTankAimingComponent;
+class UTankMovementComponent;
 class AProjectile;
 
 
@@ -54,4 +55,7 @@ protected:
 
 	// LocalBarrel reference for spawning projectiless
 	UTankBarrel* Barrel = nullptr; 
+
+	UPROPERTY(BlueprintReadOnly, Category = Input)
+	UTankMovementComponent* MovementComponent = nullptr;
 };
